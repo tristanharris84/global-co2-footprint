@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+  <title>What's your CO2 Flying Footprint?</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <!--link rel="stylesheet" href="bower_components/normalize.css/normalize.css">
+  <link rel="stylesheet" href="bower_components/animate.css/animate.css"-->
+  <link rel="stylesheet" href="resources/css/app.css">
+  <script src="https://www.gstatic.com/firebasejs/3.0.4/firebase.js"></script>
+  <meta name="google-site-verification" content="JwPiNwHIyZRj9YH7DVXwQ8dDj14sIlEtRr8lGd3g61c" />
+</head>
+<body>
+
+  <div class="container">
+    <div class="prompt">
+      <h1>What's your CO2 footprint?</h1>
+    </div>
+
+    <div class="calculating">
+      Processing last 12 months of flights...
+      <div class="found-flights"></div>
+      <div class="found-co2"></div>
+    </div>
+
+    <div class="summary">
+      <div class="summaryTotalKgs"></div>
+      <div class="summaryTotalTons"></div>
+      <div class="recommendedAmt"></div>
+      <div class="button">
+        <a id="donateNow" href="">Donate Now</a>
+      </div>
+    </div>
+
+      <div class="loggedout">
+          <div id="rocket"></div><br/>
+          <div class="button" id="login">Calculate Now</div>
+      </div>
+
+      <div class="loggedin">
+          <br/>
+          <div class="button" id="logout">Logout</div>
+      </div>
+  </div>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- Latest compiled and minified Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=clientGoogleAuth"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script>
+      /*console.log("about to initialize firebase from HTML");
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyC6CfBi46QebeBwAHDHyrs5TcXi-lyQqJw",
+        authDomain: "co2-calculator.firebaseapp.com",
+        databaseURL: "https://co2-calculator.firebaseio.com",
+        storageBucket: "co2-calculator.appspot.com",
+      };
+      firebase.initializeApp(config);
+      console.log("firebase initialized called from HTML");*/
+    </script>
+    <script src="resources/js/client.js"></script>
+</body>
+</html>

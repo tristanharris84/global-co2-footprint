@@ -1,0 +1,8 @@
+{
+  "name": "Global CO2 Footprint",
+  "description": "Global CO2 management",
+  "repository": "https://github.com/tristanharris84/global-co2-footprint",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static"],
+  "image": "heroku/nodejs"
+}
