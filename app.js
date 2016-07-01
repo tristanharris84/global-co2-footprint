@@ -5,6 +5,7 @@ var http = require('http');
 var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
+var request = require('request');
 
 var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
@@ -20,7 +21,39 @@ app.get('/', function (req, res) {
 });
 
 app.get('flight-co2', function (req, res) {
-  res.send("testing");
+
+    var origin = req.query.origin;
+    var destination = req.query.destination;
+    var host = "http://impact.brighterplanet.com";
+    var path = "flights.json";
+    var endpoint = host + "/" + path;
+    var options = {};
+
+    console.log("computeCO2Footprint() called");
+
+    endpoint += "?" + "origin_airport=" + encodeURI(origin) + "&destination_airport=" + encodeURI(destination);
+
+    request('endpoint', function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        // from within the callback, write data to response, essentially returning it.
+        res.send(body);
+      }
+    })
+
+    /*request(endpoint, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        var result = JSON.parse(body);
+
+        if (result.decisions && result.decisions.carbon) {
+            success(result.decisions.carbon);
+        }
+      } else {
+        console.log("ERROR computeCO2Footprint for " + origin + " > " + destination + " : ");
+        console.log("\t" + body);
+        console.log("\t" + response.statusCode);
+      }
+    })*/
+  }
 }
 
 app.listen(3000, function () {

@@ -189,7 +189,7 @@
   }
 
   function computeCO2Footprint (origin, destination, successHandler) {
-    var host = "http://impact.brighterplanet.com";
+    /*var host = "http://impact.brighterplanet.com";
     var path = "flights.json";
     var endpoint = host + "/" + path;
 
@@ -197,7 +197,13 @@
 
     jQuery.support.cors = true;
     console.log("jQuery.support is next: ");
-    console.log(jQuery.support.cors);
+    console.log(jQuery.support.cors);*/
+
+    var host = "";
+    var path = "flight-co2";
+    var endpoint = host + "/" + path;
+
+    endpoint += "?" + "origin=" + encodeURI(origin) + "&destination" = encodeURI(destination);
 
     $.ajax({
       url: endpoint,
@@ -208,7 +214,8 @@
       },
       crossDomain: true,
       success: function(data) {
-        //console.log(data);
+        console.log("clientCallback from local flight-co2");
+        console.log(data);
         //var responseData = JSON.parse(data);
         if (data.decisions && data.decisions.carbon) {
           successHandler(data.decisions.carbon);
